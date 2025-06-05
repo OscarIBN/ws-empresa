@@ -1,61 +1,125 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Prueba Web Services
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Prueba para la vacante de desarrollador backend
 
-## About Laravel
+Por OIBN
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Instalaciones previas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **PHP v. 8**
+- **Laravel v. 12**
+- **Composer**
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Inicio
 
-## Learning Laravel
+<pre>
+php artisan serve
+</pre>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Requerimientos tecnológicos y técnicos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- En el momento de crearse una empresa esta deberá crearse con estado ‘Activo’ por defecto.
+- El nit debe ser único por lo tanto no puede estar duplicado
+- Puede usarse cualquier motor de BD
+- La lógica debe ser codificada utilizando Laravel y PHP
+- Deben validarse los datos de entrada (tipo, valores permitidos, longitud)
+- Subir la implementación a un repositorio público y compartir enlace
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+- Se evidencia conocimientos y uso de manejo de excepciones usando try catch
+- Layering, patrones de diseño. Se implementa clean code
+- Se evidencia conocimiento y uso de pruebas unitarias se realiza usando unit test
 
-## Laravel Sponsors
+## End Points
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Variables
 
-### Premium Partners
+<table>
+    <tr>
+        <th>IP</th>
+        <th>Referencia</th>
+    </tr>
+    <tr>
+        <td><code>localhost</code></td>
+        <td>Máquina local</td>
+    </tr>
+    <tr>
+        <td><code>179.33.23.186</code></td>
+        <td>Servidor casero publico propio</td>
+    </tr>
+</table>
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
 
-## Contributing
+### Listar todas las empresas
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Muestra todos las empresas
 
-## Code of Conduct
+GET
+<br>
+<code>
+http://{{ip}}:8000/api/enterprises
+</code>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+### Mostrar empresa por nit
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Muestra la empresa que coincida con el nit
 
-## License
+GET
+<br>
+<code>
+http://{{ip}}:8000/api/enterprises/{{nit}}
+</code>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+### Crear empresa
+
+Crea una nueva empresa con estado true
+
+POST
+<br>
+<code>
+http://{{ip}}:8000/api/enterprises
+</code>
+
+BODY
+<br>
+<pre>
+{
+  "nit":"123456789",
+  "nombre":"Nombre de la empresa",
+  "direccion":"Dirección de la empresa",
+  "telefono":"Telefono de la empresa"
+}
+</pre>
+
+
+### Editar empresa
+
+Edita una empresa
+
+PUT
+<br>
+<code>
+http://{{ip}}:8000/api/enterprises/{{nit}}
+</code>
+
+BODY
+<br>
+<pre>
+{
+  "nombre":"Nombre de la empresa",
+  "direccion":"Dirección de la empresa",
+  "telefono":"Telefono de la empresa",
+  "estado":"Estado de la empresa puede ser true o false"
+}
+</pre>
+
+### Eliminar empresa
+
+Elimina una empresa
+
+DELETE
+<br>
+<code>
+http://{{ip}}:8000/api/enterprises/{{nit}}
+</code>
